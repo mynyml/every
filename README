@@ -1,0 +1,12 @@
+Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables.
+
+compare:
+
+  enum = [1.4, 2.4 ,3.4]
+  enum.map {|i| i.floor } #=> [1, 2, 3]
+  enum.map(&:floor)       #=> [1, 2, 3]
+  enum.every.floor        #=> [1, 2, 3]
+
+and arguments? sure:
+
+  %w( axb dxf ).every.gsub(/x/,'y') #=> ['ayb', 'dyf']
