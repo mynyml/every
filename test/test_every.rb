@@ -6,7 +6,7 @@ require root.join('lib/every')
 class EveryTest < Test::Unit::TestCase
   context "Every" do
     test "is a basic object" do
-      whitelist = %w( __id__ __send__ method_missing )
+      whitelist = %w( __id__ __send__ method_missing end )
       Every.instance_methods.to_set.should be(whitelist.to_set)
     end
     test "calls method on enumerable's items" do
