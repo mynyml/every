@@ -3,8 +3,8 @@ class Every
   def initialize(obj)
     @obj = obj
   end
-  def method_missing(method, *args)
-    @obj.map {|o| o.__send__(method,*args) }
+  def method_missing(method, *args, &block)
+    @obj.map {|o| o.__send__(method,*args, &block) }
   end
 end
 

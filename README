@@ -10,3 +10,7 @@ compare:
 and arguments? sure:
 
   %w( axb dxf ).every.gsub(/x/,'y') #=> ['ayb', 'dyf']
+
+Block? sure:
+
+  %w( axb dxf ).every.gsub(/x/) { 'y' } #=> ['ayb', 'dyf']
