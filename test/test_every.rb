@@ -1,4 +1,5 @@
 require 'pathname'
+require 'set'
 root  =  Pathname(__FILE__).dirname.parent
 require root.join('test/test_helper')
 require root.join('lib/every')
