@@ -27,4 +27,5 @@ Benchmark.bm(15) do |bm|
   bm.report('Block:')           { (0..n).map {|i| i.floor }.map {|i| i.next } }
   bm.report('Symbol#to_proc:')  { (0..n).map(&:floor).map(&:next) }
   bm.report('every:')           { (0..n).every.floor.every.next }
+  bm.report('every!:')          { (0..n).every!.floor.next.end }
 end
