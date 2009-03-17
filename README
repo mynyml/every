@@ -11,3 +11,7 @@ arguments? sure:
 
   %w( axb dxf ).every.gsub(/x/,'y')     #=> ['ayb', 'dyf']
   %w( axb dxf ).every.gsub(/x/) { 'y' } #=> ['ayb', 'dyf']
+
+need to call multiple methods?
+
+  enum.every { floor.next + 2 } #=> [4,5,6]

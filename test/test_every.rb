@@ -10,7 +10,7 @@ class EveryTest < Test::Unit::TestCase
       whitelist = %w( __id__ __send__ method_missing )
       Every.instance_methods.to_set.should be(whitelist.to_set)
     end
-    test "calls method on enumerable's items" do
+    test "passes message onto enumerable's items" do
       [1.4, 2.4, 3.4].every.floor.should be([1,2,3])
     end
     test "allows arguments" do
@@ -18,6 +18,9 @@ class EveryTest < Test::Unit::TestCase
     end
     test "allows blocks" do
       %w( axb dxf ).every.gsub(/x/) { 'y' }.should be(%w( ayb dyf ))
+    end
+    test "accepts multi-level message passing" do
+      [1.4, 2.4, 3.4].every { floor.next + 2 }.should be([4,5,6])
     end
   end
 end

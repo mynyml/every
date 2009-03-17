@@ -9,7 +9,11 @@ class Every
 end
 
 module Enumerable
-  def every
-    Every.new(self)
+  def every(&block)
+    if block_given?
+      Every.new(self).instance_eval(&block)
+    else
+      Every.new(self)
+    end
   end
 end
