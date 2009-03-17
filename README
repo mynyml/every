@@ -15,3 +15,5 @@ arguments? sure:
 need to call multiple methods?
 
   enum.every { floor.next + 2 } #=> [4,5,6]
+
+like #map, but right to the point.

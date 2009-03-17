@@ -10,10 +10,8 @@ end
 
 module Enumerable
   def every(&block)
-    if block_given?
-      Every.new(self).instance_eval(&block)
-    else
+    block_given? ?
+      Every.new(self).instance_eval(&block) :
       Every.new(self)
-    end
   end
 end
