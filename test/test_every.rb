@@ -16,7 +16,7 @@ class EveryTest < Test::Unit::TestCase
     test "allows arguments" do
       %w( axb dxf ).every.gsub(/x/,'y').should be(%w( ayb dyf ))
     end
-    test "allows arguments and block" do
+    test "allows blocks" do
       %w( axb dxf ).every.gsub(/x/) { 'y' }.should be(%w( ayb dyf ))
     end
   end

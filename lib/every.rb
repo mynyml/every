@@ -4,7 +4,7 @@ class Every
     @obj = obj
   end
   def method_missing(method, *args, &block)
-    @obj.map {|o| o.__send__(method,*args, &block) }
+    @obj.map {|o| o.__send__(method, *args, &block) }
   end
 end
 
