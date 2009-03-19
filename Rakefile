@@ -1,6 +1,15 @@
+# --------------------------------------------------
+# tasks mostly copied from thin's Rakefile
+# http://github.com/macournoyer/thin/tree/master
+# --------------------------------------------------
+
 require 'rake/gempackagetask'
 require 'pathname'
 require 'yaml'
+
+RUBY_1_9  = RUBY_VERSION =~ /^1\.9/
+WIN       = (RUBY_PLATFORM =~ /mswin|cygwin/)
+SUDO      = (WIN ? "" : "sudo")
 
 def gem
   RUBY_1_9 ? 'gem19' : 'gem'
