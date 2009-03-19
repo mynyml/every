@@ -12,7 +12,7 @@ end
 
 spec = Gem::Specification.new do |s|
   s.name            = 'every'
-  s.version         = '0.5.1'
+  s.version         = '0.6'
   s.summary         = "Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables."
   s.description     = "Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables."
   s.author          = "Martin Aumont"
