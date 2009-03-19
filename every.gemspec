@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: every
 version: !ruby/object:Gem::Version 
-  version: 0.5.0
+  version: "0.6"
 platform: ruby
 authors: 
 - Martin Aumont
@@ -9,7 +9,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-03-16 00:00:00 -04:00
+date: 2009-03-18 00:00:00 -04:00
 default_executable: 
 dependencies: []
 
@@ -26,11 +26,15 @@ files:
 - lib/every.rb
 - examples
 - examples/simple.rb
+- LICENSE
+- benchmarks.rb
 - README
+- every.gemspec
 - Rakefile
 - test
 - test/test_helper.rb
 - test/test_every.rb
+- TODO
 has_rdoc: true
 homepage: ""
 post_install_message: 

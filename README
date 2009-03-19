@@ -7,9 +7,10 @@ compare:
   enum.map(&:floor)       #=> [1, 2, 3]
   enum.every.floor        #=> [1, 2, 3]
 
-and arguments? sure:
+arguments? sure:
 
-  %w( axb dxf ).every.gsub(/x/,'y') #=> ['ayb', 'dyf']
+  %w( axb dxf ).every.gsub(/x/,'y')     #=> ['ayb', 'dyf']
+  %w( axb dxf ).every.gsub(/x/) { 'y' } #=> ['ayb', 'dyf']
 
 need to call multiple methods?
 

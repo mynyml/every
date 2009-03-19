@@ -1,6 +1,15 @@
+# --------------------------------------------------
+# tasks mostly copied from thin's Rakefile
+# http://github.com/macournoyer/thin/tree/master
+# --------------------------------------------------
+
 require 'rake/gempackagetask'
 require 'pathname'
 require 'yaml'
+
+RUBY_1_9  = RUBY_VERSION =~ /^1\.9/
+WIN       = (RUBY_PLATFORM =~ /mswin|cygwin/)
+SUDO      = (WIN ? "" : "sudo")
 
 def gem
   RUBY_1_9 ? 'gem19' : 'gem'
@@ -12,7 +21,7 @@ end
 
 spec = Gem::Specification.new do |s|
   s.name            = 'every'
-  s.version         = '0.5.1'
+  s.version         = '0.6'
   s.summary         = "Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables."
   s.description     = "Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables."
   s.author          = "Martin Aumont"

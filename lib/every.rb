@@ -3,8 +3,8 @@ class Every
   def initialize(obj, chain=false)
     @obj, @chain = obj, chain
   end
-  def method_missing(method, *args)
-    @@enum = @obj.map {|o| o.__send__(method,*args) }
+  def method_missing(method, *args, &block)
+    @@enum = @obj.map {|o| o.__send__(method, *args, &block) }
     @chain ? Every.new(@@enum, true) : @@enum
   end
   def end
