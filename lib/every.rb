@@ -1,10 +1,10 @@
 class Every
   instance_methods.each { |m| undef_method(m) unless m.match(/^__/) }
-  def initialize(obj)
-    @obj = obj
+  def initialize(enum)
+    @enum = enum
   end
   def method_missing(method, *args, &block)
-    @obj.map {|o| o.__send__(method, *args, &block) }
+    @enum.map {|o| o.__send__(method, *args, &block) }
   end
 end
 
