@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: every
 version: !ruby/object:Gem::Version 
-  version: "0.6"
+  version: "0.9"
 platform: ruby
 authors: 
 - Martin Aumont
@@ -9,7 +9,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-03-18 00:00:00 -04:00
+date: 2009-03-22 00:00:00 -04:00
 default_executable: 
 dependencies: []
 
@@ -24,8 +24,6 @@ extra_rdoc_files: []
 files: 
 - lib
 - lib/every.rb
-- examples
-- examples/simple.rb
 - LICENSE
 - benchmarks.rb
 - README
@@ -34,6 +32,7 @@ files:
 - test
 - test/test_helper.rb
 - test/test_every.rb
+- examples.rb
 - TODO
 has_rdoc: true
 homepage: ""
