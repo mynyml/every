@@ -18,3 +18,9 @@ need to call multiple methods? there's a shortcut:
   enum.every { floor.next + 2 }          #=> [4,5,6]
 
 like #map, but right to the point.
+
+-----
+experimental: #select/#reject
+
+  %w( foo bar baz ).select_every.match(/^ba/).inspect #=> ['bar', 'baz']
+  %w( foo bar baz ).reject_every.match(/^ba/).inspect #=> ['foo']
