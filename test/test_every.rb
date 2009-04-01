@@ -8,7 +8,7 @@ class EveryTest < Test::Unit::TestCase
   context "Every" do
     test "is a basic object" do
       whitelist = %w( __id__ __send__ method_missing )
-      Every.instance_methods.to_set.should be(whitelist.to_set)
+      Enumerable::Proxy.instance_methods.to_set.should be(whitelist.to_set)
     end
     context "#every" do
       test "passes message onto enumerable's items" do
