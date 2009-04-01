@@ -15,3 +15,11 @@ puts enum.inspect
 enum = %w( foo bar ) << ''
 puts enum.every.empty?.all?
 puts enum.every.empty?.any?
+
+enum = %w( foo bar baz )
+puts enum.select_every.match(/^ba/).inspect
+puts enum.reject_every.match(/^ba/).inspect
+
+enum = [1.4, 2.4 ,3.4]
+puts (enum.select_every > 1.5).inspect
+puts (enum.reject_every > 2.5).inspect
