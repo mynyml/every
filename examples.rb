@@ -1,6 +1,4 @@
-require 'pathname'
-root  =  Pathname(__FILE__).dirname.expand_path
-require  root.join('lib/every.rb')
+require 'lib/every'
 
 enum = [1.4, 2.4 ,3.4]
 puts enum.every.floor.inspect
