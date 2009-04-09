@@ -4,7 +4,7 @@ require 'pathname'
 require 'benchmark'
 root  =  Pathname(__FILE__).dirname
 require  root.join('lib/every.rb')
- 
+
 unless defined?(:a.to_proc)
   class Symbol
     def to_proc() proc { |obj| obj.__send__(self) } end
@@ -12,21 +12,21 @@ unless defined?(:a.to_proc)
 end
 
 puts
-puts "One iteration"
+puts "One call"
 n = 100_000
-Benchmark.bm(15) do |bm|
-  bm.report('Block:')           { (0..n).map {|i| i.floor } }
+Benchmark.bmbm(15) do |bm|
+  bm.report('#map:')            { (0..n).map {|i| i.floor } }
   bm.report('Symbol#to_proc:')  { (0..n).map(&:floor) }
-  bm.report('every:')           { (0..n).every.floor }
+  bm.report('#every:')          { (0..n).every.floor }
 end
 
 puts
-puts "Two iterations"
+puts "Two calls"
 n = 100_000
-Benchmark.bm(15) do |bm|
-  bm.report('Block:')           { (0..n).map {|i| i.floor.next } }
-  bm.report('Block2:')          { (0..n).map {|i| i.floor }.map {|i| i.next } }
+Benchmark.bmbm(15) do |bm|
+  bm.report('#map:')            { (0..n).map {|i| i.floor.next } }
+  bm.report('#map (x2):')       { (0..n).map {|i| i.floor }.map {|i| i.next } }
   bm.report('Symbol#to_proc:')  { (0..n).map(&:floor).map(&:next) }
-  bm.report('every:')           { (0..n).every.floor.every.next }
-  bm.report('every (chain):')   { (0..n).every { floor.next } }
+  bm.report('#every:')          { (0..n).every.floor.every.next }
+  bm.report('#every (chain):')  { (0..n).every { floor.next } }
 end
