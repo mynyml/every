@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: every
 version: !ruby/object:Gem::Version 
-  version: "0.9"
+  version: "1.0"
 platform: ruby
 authors: 
 - Martin Aumont
@@ -9,7 +9,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-03-22 00:00:00 -04:00
+date: 2009-05-19 00:00:00 -04:00
 default_executable: 
 dependencies: []
 
@@ -22,20 +22,22 @@ extensions: []
 extra_rdoc_files: []
 
 files: 
+- Rakefile
+- test
+- test/test_every.rb
+- test/test_helper.rb
+- every.gemspec
+- benchmarks.rb
+- TODO
 - lib
 - lib/every.rb
 - LICENSE
-- benchmarks.rb
-- README
-- every.gemspec
-- Rakefile
-- test
-- test/test_helper.rb
-- test/test_every.rb
 - examples.rb
-- TODO
+- README
 has_rdoc: true
 homepage: ""
+licenses: []
+
 post_install_message: 
 rdoc_options: []
 
@@ -56,9 +58,9 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: 
-rubygems_version: 1.3.1
+rubygems_version: 1.3.3
 signing_key: 
-specification_version: 2
+specification_version: 3
 summary: Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables.
 test_files: []
 
