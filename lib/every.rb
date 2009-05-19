@@ -11,9 +11,7 @@ module Enumerable
 end
 
 module Enumerable
-  def every(&block)
-    block_given? ?
-      Proxy.new(self).instance_eval(&block) :
-      Proxy.new(self)
+  def every
+    Proxy.new(self)
   end
 end
