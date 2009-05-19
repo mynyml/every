@@ -18,3 +18,12 @@ puts enum.every.empty?.all?
 #=> false
 puts enum.every.empty?.any?
 #=> true
+
+enum = [{:name => 'Foo'}, {:name => 'Bar'}]
+puts enum.every[:name].inspect
+#=> ["Foo", "Bar"]
+
+enum = [1,2,3]
+puts (enum.every + 1).inspect
+#puts enum.every.+(1).inspect
+#=> [2, 3, 4] 
