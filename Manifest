@@ -8,4 +8,3 @@ every.gemspec
 examples.rb
 lib/every.rb
 test/test_every.rb
-test/test_helper.rb

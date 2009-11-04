@@ -1,8 +1,8 @@
-require 'pathname'
 require 'set'
-root  =  Pathname(__FILE__).dirname.parent
-require root.join('test/test_helper')
-require root.join('lib/every')
+require 'test/unit'
+require 'context'
+require 'matchy'
+require 'lib/every'
 
 class EveryTest < Test::Unit::TestCase
   context "Every" do
