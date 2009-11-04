@@ -18,7 +18,9 @@ describe "Every" do
   end
 
   it "should be a basic object" do
-    whitelist = %w( __id__ __send__ method_missing object_id ).every.to_s.to_set
-    Enumerable::Proxy.instance_methods.every.to_s.to_set.must_equal(whitelist)
+    whitelist = %w( __id__ __send__ method_missing object_id  )
+    whitelist << '__jtrap' if RUBY_PLATFORM == 'java'
+
+    Enumerable::Proxy.instance_methods.every.to_s.to_set.must_equal(whitelist.to_set)
   end
 end
