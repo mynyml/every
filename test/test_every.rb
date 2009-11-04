@@ -1,23 +1,24 @@
 require 'set'
-require 'test/unit'
-require 'context'
-require 'matchy'
+require 'minitest/autorun'
+require 'minitest/spec'
 require 'lib/every'
 
-class EveryTest < Test::Unit::TestCase
-  context "Every" do
-    test "is a basic object" do
-      whitelist = %w( __id__ __send__ method_missing )
-      Enumerable::Proxy.instance_methods.to_set.should be(whitelist.to_set)
-    end
-    test "passes message onto enumerable's items" do
-      [1.4, 2.4, 3.4].every.floor.should be([1,2,3])
-    end
-    test "allows arguments" do
-      %w( axb dxf ).every.gsub(/x/,'y').should be(%w( ayb dyf ))
-    end
-    test "allows blocks" do
-      %w( axb dxf ).every.gsub(/x/) { 'y' }.should be(%w( ayb dyf ))
-    end
+describe "Every" do
+
+  it "should be a basic object" do
+    whitelist = %w( __id__ __send__ method_missing ).to_set
+    Enumerable::Proxy.instance_methods.to_set.must_equal(whitelist.to_set)
+  end
+
+  it "should pass message onto enumerable's items" do
+    [1.4, 2.4, 3.4].every.floor.must_equal([1,2,3])
+  end
+
+  it "should allow arguments" do
+    %w( axb dxf ).every.gsub(/x/,'y').must_equal(%w( ayb dyf ))
+  end
+
+  it "should allow blocks" do
+    %w( axb dxf ).every.gsub(/x/) { 'y' }.must_equal(%w( ayb dyf ))
   end
 end

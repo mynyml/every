@@ -17,7 +17,7 @@ namespace(:test) do
         bash -c 'source ~/.rvm/scripts/rvm;
                  rvm use #{version};
                  echo "--------- #{version} ----------";
-                 rake -s test:all'
+                 rake -s test'
       BASH
     end
   end

@@ -11,6 +11,5 @@ Gem::Specification.new do |s|
   s.require_path        = "lib"
   s.files               =  File.read("Manifest").strip.split("\n")
 
-  s.add_development_dependency 'context'
-  s.add_development_dependency 'matchy'
+  s.add_development_dependency 'minitest'
 end
