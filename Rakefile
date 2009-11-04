@@ -1,57 +1,51 @@
 # --------------------------------------------------
-# tasks mostly copied from thin's Rakefile
-# http://github.com/macournoyer/thin/tree/master
+# Tests
 # --------------------------------------------------
+task(:default => "test")
 
-require 'rake/gempackagetask'
-require 'pathname'
-require 'yaml'
-
-RUBY_1_9  = RUBY_VERSION =~ /^1\.9/
-WIN       = (RUBY_PLATFORM =~ /mswin|cygwin/)
-SUDO      = (WIN ? "" : "sudo")
-
-def gem
-  RUBY_1_9 ? 'gem19' : 'gem'
+desc "Run tests"
+task(:test) do
+  system "ruby -rubygems -I.:lib test/test_every.rb"
 end
 
-def all_except(paths)
-  Dir['**/*'] - paths.map {|path| path.strip.gsub(/^\//,'').gsub(/\/$/,'') }
+namespace(:test) do
+  desc "Run all tests on multiple ruby versions (requires rvm)"
+  task(:portability) do
+    versions = %w(  1.8.6  1.8.7  1.9  1.9.2  jruby  )
+    versions.each do |version|
+      system <<-BASH
+        bash -c 'source ~/.rvm/scripts/rvm;
+                 rvm use #{version};
+                 echo "--------- #{version} ----------";
+                 rake -s test:all'
+      BASH
+    end
+  end
 end
 
-spec = Gem::Specification.new do |s|
-  s.name            = 'every'
-  s.version         = '1.0'
-  s.summary         = "Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables."
-  s.description     = "Symbol#to_proc's hot cousin. Simple and elegant alternative to using &:method with enumerables."
-  s.author          = "Martin Aumont"
-  s.email           = 'mynyml@gmail.com'
-  s.homepage        = ''
-  s.has_rdoc        = true
-  s.require_path    = "lib"
-  s.files           = Dir['**/*']
+# --------------------------------------------------
+# Docs
+# --------------------------------------------------
+desc "Generate YARD Documentation"
+task :yardoc do
+  require 'yard'
+  files   = %w( lib/**/*.rb )
+  options = %w( -o doc/yard --readme README.rdoc --files LICENSE )
+  YARD::CLI::Yardoc.run *(options + files)
 end
 
-Rake::GemPackageTask.new(spec) do |p|
-  p.gem_spec = spec
-end
-
-
-desc "Remove package products"
-task :clean => :clobber_package
-
-desc "Update the gemspec for GitHub's gem server"
-task :gemspec do
-  Pathname("#{spec.name}.gemspec").open('w') {|f| f << YAML.dump(spec) }
-end
-
-desc "Install gem"
-task :install => [:clobber, :package] do
-  sh "#{SUDO} #{gem} install pkg/#{spec.full_name}.gem"
-end
-
-desc "Uninstall gem"
-task :uninstall => :clean do
-  sh "#{SUDO} #{gem} uninstall -v #{spec.version} -x #{spec.name}"
+# --------------------------------------------------
+# Stats
+# --------------------------------------------------
+desc "LOC count"
+task(:loc) do
+  loc = 0
+  Dir['lib/**/*'].each do |file|
+    next if File.directory?(file)
+    File.read(file).each_line do |line|
+      loc += 1 unless line.strip.empty? || line.strip =~ /^#/
+    end
+  end
+  puts "lib files contain #{loc} SLOCs"
 end
 
