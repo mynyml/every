@@ -1,6 +1,6 @@
 module Enumerable
   class Proxy
-    instance_methods.each { |m| undef_method(m) unless m.match(/^__/) }
+    instance_methods.each {|m| undef_method(m) unless m.match(/^__|object_id/) }
 
     def initialize(enum, method=:map)
       @enum, @method = enum, method
